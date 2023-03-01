@@ -1,12 +1,17 @@
 import React from 'react';
-import HeaderButton from '../../components/header/header-button';
-import MainButton from '../../components/main-button';
+import Poster from '../../components/poster';
+import { StyledContainer } from '../../global-styles';
+import * as S from './styles';
 
 function Home() {
   return (
     <main>
-      home page
-      <MainButton>Сохранить</MainButton>
+      <StyledContainer>
+        <S.Title>Объявления</S.Title>
+        <S.PosterList>
+          <Poster />
+        </S.PosterList>
+      </StyledContainer>
     </main>
   );
 }

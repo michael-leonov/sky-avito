@@ -41,6 +41,11 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  h1 {
+    font-family: 'Roboto-Medium';
+    font-size: 40px;
+  }
 `;
 
 export const StyledContainer = styled.div`
