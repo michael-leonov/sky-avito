@@ -1,10 +1,13 @@
-import React from 'react';
-import { StyledContainer } from '../../global-styles';
+import React, { useState } from 'react';
+import { Overlay, StyledContainer } from '../../global-styles';
 import * as S from './styles';
 import testImg from '../../assets/static/adv-test.jpg';
+import AdvReviews from '../../components/adv-reviews';
 
 function AdvPage() {
   const isUserAdv = false;
+
+  const [visibleReviews, setVisibleReviews] = useState(false);
   return (
     <S.Main>
       <StyledContainer>
@@ -30,7 +33,9 @@ function AdvPage() {
             </S.AdvTitle>
             <S.AdvDataRelease>Сегодня в 10:45</S.AdvDataRelease>
             <S.AdvLocation>Санкт-Петербург</S.AdvLocation>
-            <S.AdvReviews>23 отзыва</S.AdvReviews>
+            <S.AdvReviews onClick={() => setVisibleReviews(true)}>
+              23 отзыва
+            </S.AdvReviews>
             <S.AdvPrice>2 200 ₽</S.AdvPrice>
 
             <S.PhoneButton>
@@ -62,6 +67,12 @@ function AdvPage() {
           </S.AdvDescription>
         </div>
       </StyledContainer>
+      {visibleReviews && (
+        <>
+          <AdvReviews closeForm={() => setVisibleReviews(false)} />
+          <Overlay />
+        </>
+      )}
     </S.Main>
   );
 }
