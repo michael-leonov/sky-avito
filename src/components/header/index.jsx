@@ -10,13 +10,13 @@ function Header({ isAuth }) {
       <StyledContainer>
         <S.HeaderInner>
           {isAuth ? (
-            <Link to="/profile">
+            <Link to="/profile/1">
               <HeaderButton>Вход в личный кабинет</HeaderButton>
             </Link>
           ) : (
             <S.HeaderAuthButtons>
               <HeaderButton>Разместить обьявление</HeaderButton>
-              <Link to="profile">
+              <Link to="/profile/1">
                 <HeaderButton>Лчиный кабинет</HeaderButton>
               </Link>
             </S.HeaderAuthButtons>

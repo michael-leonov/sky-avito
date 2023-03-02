@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
-  padding-bottom: 117px;
+  padding-bottom: 80px;
 `;
 
 export const AdvList = styled.div`
