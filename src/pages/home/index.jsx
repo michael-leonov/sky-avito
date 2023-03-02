@@ -5,14 +5,14 @@ import * as S from './styles';
 
 function Home() {
   return (
-    <main>
+    <S.Main>
       <StyledContainer>
         <S.Title>Объявления</S.Title>
         <S.AdvList>
           <Adv />
         </S.AdvList>
       </StyledContainer>
-    </main>
+    </S.Main>
   );
 }
 

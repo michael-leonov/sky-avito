@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const DataForm = styled.form`
   display: flex;
   column-gap: 50px;
+  margin-bottom: 70px;
 `;
 
 export const AvatarWrapper = styled.div`
