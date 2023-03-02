@@ -3,8 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './components/protected-route';
 import Home from './pages/home';
 import NotFound from './pages/not-found';
-import { HOME_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE } from './utils/consts';
+import {
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  PROFILE_ROUTE,
+  SIGNUP_ROUTE,
+} from './utils/consts';
 import Auth from './pages/auth';
+import Profile from './pages/profile';
 
 function AppRoutes() {
   return (
@@ -13,7 +19,15 @@ function AppRoutes() {
       <Route path={SIGNUP_ROUTE} element={<Auth />} />
       <Route path={LOGIN_ROUTE} element={<Auth />} />
 
-      <Route element={<ProtectedRoute />} />
+      <Route path={PROFILE_ROUTE} element={<Profile />} />
+
+      {/* <Route
+        element={
+          <ProtectedRoute>
+            <Route path={PROFILE_ROUTE} element={<Profile />} />
+          </ProtectedRoute>
+        }
+      /> */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
