@@ -49,6 +49,13 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     font-family: 'Roboto-Medium';
     font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Roboto-Medium';
+    font-size: 32px;
+    margin-bottom: 20px;
   }
 `;
 
