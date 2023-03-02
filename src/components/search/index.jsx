@@ -4,26 +4,28 @@ import * as S from './styles';
 import logo from '../../assets/static/logo.svg';
 import MainButton from '../main-button';
 import { StyledContainer } from '../../global-styles';
+import { HOME_ROUTE } from '../../utils/consts';
 
 function Search() {
   const { pathname } = useLocation();
 
-  if (pathname !== '/')
-    return (
-      <Link to="/">
-        <MainButton>Вернуться на главную</MainButton>
-      </Link>
-    );
+  const isHome = pathname === HOME_ROUTE;
 
   return (
     <S.Search>
       <StyledContainer>
         <S.SearchWrapper>
           <img src={logo} alt="logo" />
-          <S.SearchBlock>
-            <S.SearchInput placeholder="Поиск по объявлениям" />
-            <MainButton>Найти</MainButton>
-          </S.SearchBlock>
+          {isHome ? (
+            <S.SearchBlock>
+              <S.SearchInput placeholder="Поиск по объявлениям" />
+              <MainButton>Найти</MainButton>
+            </S.SearchBlock>
+          ) : (
+            <Link to="/">
+              <MainButton>Вернуться на главную</MainButton>
+            </Link>
+          )}
         </S.SearchWrapper>
       </StyledContainer>
     </S.Search>

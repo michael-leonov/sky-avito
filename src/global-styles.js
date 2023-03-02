@@ -41,6 +41,10 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  
+  body {
+    position: relative;
+  }
 
   h1 {
     font-family: 'Roboto-Medium';
