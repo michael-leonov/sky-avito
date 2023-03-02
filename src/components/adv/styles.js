@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export const Poster = styled.div``;
+export const Adv = styled.div``;
 
-export const PosterImage = styled.img`
+export const AdvImage = styled.img`
   width: 270px;
   height: 270px;
   margin-bottom: 20px;
 `;
 
-export const PosterTitle = styled.p`
+export const AdvTitle = styled.p`
   font-size: 22px;
   margin-bottom: 10px;
   color: #009ee4;
@@ -19,21 +19,21 @@ export const PosterTitle = styled.p`
   overflow: hidden;
 `;
 
-export const PosterPrice = styled.p`
+export const AdvPrice = styled.p`
   font-size: 22px;
   margin-bottom: 10px;
   color: #000;
   font-family: 'Roboto-Medium';
 `;
 
-export const PosterLocation = styled.p`
+export const AdvLocation = styled.p`
   font-size: 16px;
   margin-bottom: 4px;
   color: #5f5f5f;
   font-family: 'Roboto-Regular';
 `;
 
-export const PosterDataRelease = styled.p`
+export const AdvDataRelease = styled.p`
   font-size: 16px;
   margin-bottom: 4px;
   color: #5f5f5f;

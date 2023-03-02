@@ -1,5 +1,5 @@
 import React from 'react';
-import Poster from '../../components/poster';
+import Adv from '../../components/adv';
 import { StyledContainer } from '../../global-styles';
 import * as S from './styles';
 
@@ -8,9 +8,9 @@ function Home() {
     <main>
       <StyledContainer>
         <S.Title>Объявления</S.Title>
-        <S.PosterList>
-          <Poster />
-        </S.PosterList>
+        <S.AdvList>
+          <Adv />
+        </S.AdvList>
       </StyledContainer>
     </main>
   );
