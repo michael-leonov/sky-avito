@@ -10,3 +10,8 @@ export const HeaderInner = styled.div`
   display: flex;
   justify-content: end;
 `;
+
+export const HeaderAuthButtons = styled.div`
+  display: flex;
+  column-gap: 8px;
+`;

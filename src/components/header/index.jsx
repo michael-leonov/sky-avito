@@ -4,14 +4,23 @@ import * as S from './styles';
 import HeaderButton from './header-button';
 import { StyledContainer } from '../../global-styles';
 
-function Header() {
+function Header({ isAuth }) {
   return (
     <S.Header>
       <StyledContainer>
         <S.HeaderInner>
-          <Link to="/profile">
-            <HeaderButton>Вход в личный кабинет</HeaderButton>
-          </Link>
+          {isAuth ? (
+            <Link to="/profile">
+              <HeaderButton>Вход в личный кабинет</HeaderButton>
+            </Link>
+          ) : (
+            <S.HeaderAuthButtons>
+              <HeaderButton>Разместить обьявление</HeaderButton>
+              <Link to="profile">
+                <HeaderButton>Лчиный кабинет</HeaderButton>
+              </Link>
+            </S.HeaderAuthButtons>
+          )}
         </S.HeaderInner>
       </StyledContainer>
     </S.Header>
