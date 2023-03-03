@@ -59,6 +59,12 @@ export const AdvPrice = styled.p`
   margin-bottom: 20px;
 `;
 
+export const AdvSettingsButtons = styled.div`
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 34px;
+`;
+
 export const PhoneButton = styled.button`
   display: flex;
   flex-direction: column;

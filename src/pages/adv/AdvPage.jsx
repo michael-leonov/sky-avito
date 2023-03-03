@@ -3,9 +3,10 @@ import { Overlay, StyledContainer } from '../../global-styles';
 import * as S from './styles';
 import testImg from '../../assets/static/test.jpg';
 import AdvReviews from '../../components/adv-reviews';
+import MainButton from '../../components/main-button';
 
 function AdvPage() {
-  const isUserAdv = false;
+  const isUserAdv = true;
 
   const [visibleReviews, setVisibleReviews] = useState(false);
   return (
@@ -37,11 +38,17 @@ function AdvPage() {
               23 отзыва
             </S.AdvReviews>
             <S.AdvPrice>2 200 ₽</S.AdvPrice>
-
-            <S.PhoneButton>
-              Показать телефон
-              <span>8 905 ХХХ ХХ ХХ</span>
-            </S.PhoneButton>
+            {isUserAdv ? (
+              <S.AdvSettingsButtons>
+                <MainButton type="button">Редактировать</MainButton>
+                <MainButton type="button">Снять с публикации</MainButton>
+              </S.AdvSettingsButtons>
+            ) : (
+              <S.PhoneButton>
+                Показать телефон
+                <span>8 905 ХХХ ХХ ХХ</span>
+              </S.PhoneButton>
+            )}
 
             <S.SellerInfo>
               <S.SellerAvatar src={testImg} alt="seller avatar" />
