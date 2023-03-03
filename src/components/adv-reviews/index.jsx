@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import MainButton from '../main-button';
-import testImg from '../../assets/static/adv-test.jpg';
+import testImg from '../../assets/static/test.jpg';
 import CloseFormButton from '../close-form-button';
 
 function AdvReviews({ closeForm }) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Overlay, StyledContainer } from '../../global-styles';
 import * as S from './styles';
-import testImg from '../../assets/static/adv-test.jpg';
+import testImg from '../../assets/static/test.jpg';
 import AdvReviews from '../../components/adv-reviews';
 
 function AdvPage() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
 import { ADV_ROUTE } from '../../utils/consts';
-import testImg from '../../assets/static/adv-test.jpg';
+import testImg from '../../assets/static/test.jpg';
 
 function Adv() {
   return (
