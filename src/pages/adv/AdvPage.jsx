@@ -4,11 +4,14 @@ import * as S from './styles';
 import testImg from '../../assets/static/test.jpg';
 import AdvReviews from '../../components/adv-reviews';
 import MainButton from '../../components/main-button';
+import EditAdvForm from '../../components/edit-adv-form';
 
 function AdvPage() {
   const isUserAdv = true;
 
   const [visibleReviews, setVisibleReviews] = useState(false);
+  const [visibleEditAdvForm, setVisibleEditAdvForm] = useState(false);
+
   return (
     <S.Main>
       <StyledContainer>
@@ -40,7 +43,12 @@ function AdvPage() {
             <S.AdvPrice>2 200 ₽</S.AdvPrice>
             {isUserAdv ? (
               <S.AdvSettingsButtons>
-                <MainButton type="button">Редактировать</MainButton>
+                <MainButton
+                  type="button"
+                  onClick={() => setVisibleEditAdvForm(true)}
+                >
+                  Редактировать
+                </MainButton>
                 <MainButton type="button">Снять с публикации</MainButton>
               </S.AdvSettingsButtons>
             ) : (
@@ -77,6 +85,13 @@ function AdvPage() {
       {visibleReviews && (
         <>
           <AdvReviews closeForm={() => setVisibleReviews(false)} />
+          <Overlay />
+        </>
+      )}
+
+      {visibleEditAdvForm && (
+        <>
+          <EditAdvForm closeForm={() => setVisibleEditAdvForm(false)} />
           <Overlay />
         </>
       )}
