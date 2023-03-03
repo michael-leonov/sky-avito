@@ -1,8 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-function HeaderButton({ children }) {
-  return <S.Button type="button">{children}</S.Button>;
+function HeaderButton({ children, onClick }) {
+  return (
+    <S.Button type="button" onClick={onClick}>
+      {children}
+    </S.Button>
+  );
 }
 
 export default HeaderButton;

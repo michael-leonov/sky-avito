@@ -13,11 +13,10 @@ export const ReviewsBlock = styled.div`
   background-color: #fff;
 `;
 
-export const ReviewBlockInner = styled.div`
-  position: relative;
-`;
-
-export const ReviewTitle = styled.h2`
+export const ReviewTitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 50px 0;
 `;
 
@@ -41,18 +40,6 @@ export const ReviewSendForm = styled.form`
 export const ReviewSendFormInput = styled.input`
   padding: 10px 20px 66px 20px;
   margin-bottom: 14px;
-  outline: 1px solid rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 6px;
-
-  ::placeholder {
-    color: rgba(0, 0, 0, 0.3);
-    font-size: 16px;
-  }
-
-  :focus {
-    outline: 1px solid #009ee4;
-  }
 `;
 
 export const ReviewsList = styled.div`

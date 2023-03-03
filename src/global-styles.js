@@ -43,6 +43,21 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  input {
+    outline: 1px solid rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 6px;
+
+    :focus {
+      outline: 1px solid #009EE4;
+    }
+
+    ::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 16px;
+    }
+  }
   
   body {
     position: relative;

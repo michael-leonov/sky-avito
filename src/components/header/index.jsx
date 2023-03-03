@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
 import HeaderButton from './header-button';
-import { StyledContainer } from '../../global-styles';
+import { StyledContainer, Overlay } from '../../global-styles';
+import CreateAdvForm from '../create-adv-form';
 
 function Header({ isAuth }) {
+  const [visibleAddAdv, setVisibleAddAdv] = useState();
   return (
     <S.Header>
       <StyledContainer>
@@ -15,7 +17,9 @@ function Header({ isAuth }) {
             </Link>
           ) : (
             <S.HeaderAuthButtons>
-              <HeaderButton>Разместить обьявление</HeaderButton>
+              <HeaderButton onClick={() => setVisibleAddAdv(true)}>
+                Разместить объявление
+              </HeaderButton>
               <Link to="/profile/1">
                 <HeaderButton>Лчиный кабинет</HeaderButton>
               </Link>
@@ -23,6 +27,13 @@ function Header({ isAuth }) {
           )}
         </S.HeaderInner>
       </StyledContainer>
+
+      {visibleAddAdv && (
+        <>
+          <CreateAdvForm closeForm={() => setVisibleAddAdv(false)} />
+          <Overlay />
+        </>
+      )}
     </S.Header>
   );
 }

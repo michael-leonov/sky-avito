@@ -16,7 +16,7 @@ export const Button = styled.button`
 
 export const InactiveButton = styled(Button)`
   background-color: #d9d9d9;
-  cursor: none;
+  cursor: auto;
 
   :hover {
     background-color: #d9d9d9;

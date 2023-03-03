@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './styles';
 
-function CloseFormButton({ topPos, onClick }) {
+function CloseFormButton({ onClick }) {
   return (
-    <S.CloseBtnWrapper top={topPos}>
+    <S.CloseBtnWrapper>
       <S.CloseBtn onClick={onClick} />
     </S.CloseBtnWrapper>
   );

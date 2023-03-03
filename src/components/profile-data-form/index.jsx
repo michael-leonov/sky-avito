@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useRef, useState } from 'react';
 import MainButton from '../main-button';
 import * as S from './styles';
@@ -26,8 +25,6 @@ function ProfileDataForm() {
     const fileUploaded = hiddenFileInput.current.files[0];
     const obj = URL.createObjectURL(fileUploaded);
     setAvatarSrc(obj);
-
-    // avatarRef.currentSrc(obj);
   };
 
   const handleSubmit = () => {};
