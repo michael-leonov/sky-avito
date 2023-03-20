@@ -64,11 +64,6 @@ function SearchBar({ advs, setAdvs }) {
     InputRef.current.value = '';
   });
 
-  useEffect(() => {
-    // console.log(filtredAdvs);
-    // setAdvs(filtredAdvs);
-  }, [filtredAdvs]);
-
   return (
     <S.Search>
       <StyledContainer>
