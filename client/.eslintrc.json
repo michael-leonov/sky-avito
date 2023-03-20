@@ -30,6 +30,7 @@
         "custom": "ignore"
       }
     ],
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "no-nested-ternary": "off"
   }
 }
