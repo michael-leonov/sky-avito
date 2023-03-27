@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-expressions */
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Main = styled.div`
   padding-bottom: 37px;
