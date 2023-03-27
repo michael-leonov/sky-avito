@@ -1,30 +1,33 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import * as S from './styles';
 import logo from '../../assets/static/logo.svg';
 import MainButton from '../main-button';
 import { StyledContainer, Overlay } from '../../global-styles';
 import FoundAdv from './found-adv';
-
+import { filterAdv } from '../../redux/slices/filterAdvAction';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 
-function SearchBar({ advs, setAdvs }) {
+function SearchBar({ advs, setIsSearch }) {
   const InputWrapperRef = useRef();
   const InputRef = useRef();
 
   const filterSearchCount = 5;
   const maxCountAdvs = 10;
 
-  const [isSearch, setIsSearch] = useState(false);
-  const [seachValue, setSearchValue] = useState('');
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [bufferSearchValue, setBufferSearchValue] = useState('');
   const [countSlice, setCountSlice] = useState(filterSearchCount);
   const [isClickShowMore, setIsClickShowMore] = useState(false);
 
-  const filtredAdvs = advs?.filter((adv) =>
-    adv?.title.toLowerCase().includes(seachValue.toLowerCase())
+  const filteredAdvs = advs?.filter((adv) =>
+    adv?.title.toLowerCase().includes(searchValue.toLowerCase())
   );
+
+  const dispatch = useDispatch();
 
   const onChangeHandler = (e) => {
     const { target } = e;
@@ -34,7 +37,7 @@ function SearchBar({ advs, setAdvs }) {
   };
 
   const onClickHandler = () => {
-    setIsSearch(false);
+    setIsSearchActive(false);
     setSearchValue('');
     setBufferSearchValue('');
     setCountSlice(filterSearchCount);
@@ -44,24 +47,24 @@ function SearchBar({ advs, setAdvs }) {
     const { target } = e;
     target.value = bufferSearchValue;
     setSearchValue(target.value);
-    setIsSearch(true);
+    setIsSearchActive(true);
   };
 
   const onClickFindHandler = () => {
-    setIsSearch(false);
+    dispatch(filterAdv(searchValue, advs));
+
+    setIsSearchActive(false);
     setSearchValue('');
     InputRef.current.value = '';
     setCountSlice(filterSearchCount);
     setBufferSearchValue('');
     setIsClickShowMore(false);
 
-    setAdvs(filtredAdvs);
+    setIsSearch(true);
   };
 
   useOnClickOutside(InputWrapperRef, () => {
-    setIsSearch(false);
-    setSearchValue('');
-    InputRef.current.value = '';
+    setIsSearchActive(false);
   });
 
   return (
@@ -79,19 +82,19 @@ function SearchBar({ advs, setAdvs }) {
                 onFocus={onFocusHanlder}
                 onChange={onChangeHandler}
                 ref={InputRef}
-                isSearch={isSearch}
-                seachValue={seachValue}
+                isSearch={isSearchActive}
+                seachValue={searchValue}
               />
-              {seachValue !== '' && (
-                <S.FoundAdvsWrapper isSearch={isSearch}>
+              {searchValue !== '' && (
+                <S.FoundAdvsWrapper isSearch={isSearchActive}>
                   <span>
-                    {filtredAdvs.length
-                      ? `Найдено: ${filtredAdvs.length}`
+                    {filteredAdvs.length
+                      ? `Найдено: ${filteredAdvs.length}`
                       : 'Объявлений не найдено'}
                   </span>
 
-                  {filtredAdvs &&
-                    filtredAdvs
+                  {filteredAdvs &&
+                    filteredAdvs
                       .slice(0, countSlice)
                       .slice(0, maxCountAdvs)
                       .map((adv) => (
@@ -101,11 +104,11 @@ function SearchBar({ advs, setAdvs }) {
                           onClick={onClickHandler}
                         />
                       ))}
-                  {filtredAdvs.length > countSlice &&
-                    filtredAdvs.length !== 0 && (
+                  {filteredAdvs.length > countSlice &&
+                    filteredAdvs.length !== 0 && (
                       <S.ShowAllAdvs
                         onClick={() => {
-                          setCountSlice(filtredAdvs.length);
+                          setCountSlice(filteredAdvs.length);
                           setIsClickShowMore(true);
                         }}
                       >
@@ -126,7 +129,7 @@ function SearchBar({ advs, setAdvs }) {
             <S.ButtonWrapper>
               <MainButton
                 onClick={onClickFindHandler}
-                active={filtredAdvs?.length > 0}
+                active={filteredAdvs?.length > 0}
               >
                 Найти
               </MainButton>
@@ -135,7 +138,7 @@ function SearchBar({ advs, setAdvs }) {
         </S.SearchWrapper>
       </StyledContainer>
 
-      {isSearch && <Overlay />}
+      {isSearchActive && <Overlay />}
     </S.Search>
   );
 }

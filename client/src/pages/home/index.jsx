@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Adv from '../../components/adv';
 import { StyledContainer } from '../../global-styles';
 import * as S from './styles';
@@ -8,6 +9,9 @@ import LoadingPage from '../../components/loading-page';
 
 function Home() {
   const [isSorting, setIsSorting] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+
+  const { filteredAdvs } = useSelector((state) => state.filter);
 
   let getAdvQuery;
 
@@ -17,11 +21,9 @@ function Home() {
     getAdvQuery = useGetAdvsQuery();
   }
 
+  // todo: сортировать отфилтрованный массив
+
   const { data, isLoading, isError, isFetching } = getAdvQuery;
-
-  // todo: передача филтрованного массива в state advs
-
-  const [advs, setAdvs] = useState(data);
 
   const isEmptyList = !isLoading && !data?.length;
 
@@ -40,20 +42,21 @@ function Home() {
   return (
     <S.Main>
       <StyledContainer>
-        <SearchBar advs={data} setAdvs={setAdvs} />
+        <SearchBar advs={data} setIsSearch={setIsSearch} />
         <S.TitleWrapper>
           <S.Title>Объявления</S.Title>
-          {!isLoading && data?.length > 1 && (
-            <div>
-              <S.SortNewBtn
-                type="button"
-                onClick={() => setIsSorting(!isSorting)}
-                isSorting={isSorting}
-              >
-                Сначала новые
-              </S.SortNewBtn>
-            </div>
-          )}
+          {!isLoading &&
+            (isSearch ? filteredAdvs.length > 1 : data?.length > 1) && (
+              <div>
+                <S.SortNewBtn
+                  type="button"
+                  onClick={() => setIsSorting(!isSorting)}
+                  isSorting={isSorting}
+                >
+                  Сначала новые
+                </S.SortNewBtn>
+              </div>
+            )}
         </S.TitleWrapper>
         {isFetching ? (
           <div>Секунду, ищу...</div>
@@ -61,7 +64,10 @@ function Home() {
           <p>Товары отсутствуют</p>
         ) : (
           <S.AdvList>
-            {data && data.map((adv) => <Adv key={adv.id} {...adv} />)}
+            {isSearch
+              ? filteredAdvs &&
+                filteredAdvs.map((adv) => <Adv key={adv.id} {...adv} />)
+              : data && data.map((adv) => <Adv key={adv.id} {...adv} />)}
           </S.AdvList>
         )}
       </StyledContainer>

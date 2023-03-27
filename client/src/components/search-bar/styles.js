@@ -30,8 +30,8 @@ export const SearchInput = styled.input`
   height: 100%;
   padding: 0 20px;
 
-  border-radius: ${({ isSearch, seachValue }) =>
-    isSearch && seachValue && '6px 6px 0 0'};
+  border-radius: ${({ isSearch, searchValue }) =>
+    isSearch && searchValue && '6px 6px 0 0'};
 `;
 
 export const FoundAdvsWrapper = styled.div`
