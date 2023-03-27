@@ -43,19 +43,23 @@ export const InputsNameBlock = styled.div`
 
 export const InputWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   row-gap: 4px;
-`;
-
-export const DataFormInput = styled.input`
-  display: inline-block;
-  padding: 13px 19px;
 `;
 
 export const DataFormLabel = styled.label`
   font-size: 16px;
   font-family: 'Roboto-Medium';
-  color: ${({ inputFocused }) => (inputFocused ? '#009ee4' : '#c4c4c4')};
+  color: #c4c4c4;
+`;
+
+export const DataFormInput = styled.input`
+  display: inline-block;
+  padding: 13px 19px;
+
+  :focus + ${DataFormLabel} {
+    color: #009ee4;
+  }
 `;
 
 export const DataFormInputFile = styled.input`

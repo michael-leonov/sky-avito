@@ -11,6 +11,7 @@ import formatSellsFrom from '../../utils/formateSellsFrom';
 import { useGetAdvsQuery } from '../../redux/services/advs';
 import PhoneButton from '../../components/phone-button';
 import LoadingPage from '../../components/loading-page';
+import userAvatarPlug from '../../assets/static/user_plug.png';
 
 function Profile() {
   const { userInfo } = useSelector((state) => state.user);
@@ -75,18 +76,27 @@ function Profile() {
             <S.SellerInfoBlock>
               <div>
                 <img
-                  src={`${process.env.REACT_APP_API_URL}/${sellerInfo?.avatar}`}
+                  src={
+                    (sellerInfo?.avatar &&
+                      `${process.env.REACT_APP_API_URL}/${sellerInfo?.avatar}`) ||
+                    userAvatarPlug
+                  }
                   alt="seller avatar"
                   width={170}
                 />
               </div>
               <div>
-                <S.SellerName>{`${sellerInfo?.name} ${sellerInfo?.surname}`}</S.SellerName>
+                <S.SellerName>
+                  {(sellerInfo?.name && `${sellerInfo?.name}`) ||
+                    (sellerInfo?.surname && `${sellerInfo?.surname}`) ||
+                    sellerInfo?.email}
+                </S.SellerName>
                 <S.SellerLocation>{sellerInfo?.city}</S.SellerLocation>
                 <S.SellerActivity>
-                  Продает товары с{' '}
                   {sellerInfo?.sells_from &&
-                    formatSellsFrom(sellerInfo?.sells_from)}
+                    `Продает товары с${formatSellsFrom(
+                      sellerInfo?.sells_from
+                    )}`}
                 </S.SellerActivity>
                 <PhoneButton phone={sellerInfo?.phone} />
               </div>

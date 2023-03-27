@@ -13,7 +13,6 @@ import {
 import SubmitingForm from '../submiting-form';
 
 function ProfileDataForm() {
-  const formRef = useRef();
   const hiddenFileInput = useRef();
 
   const dispatch = useDispatch();
@@ -68,7 +67,7 @@ function ProfileDataForm() {
   }, []);
 
   return (
-    <S.DataForm onSubmit={handleSubmit(onSubmit)} ref={formRef}>
+    <S.DataForm onSubmit={handleSubmit(onSubmit)}>
       <S.AvatarWrapper>
         {loading ? (
           <ThreeDots
@@ -85,7 +84,8 @@ function ProfileDataForm() {
           <>
             <S.Avatar
               src={
-                `${process.env.REACT_APP_API_URL}/${userInfo.avatar}` ||
+                (userInfo.avatar &&
+                  `${process.env.REACT_APP_API_URL}/${userInfo.avatar}`) ||
                 MyAvatarPlug
               }
               alt="profile avatar"
@@ -107,36 +107,35 @@ function ProfileDataForm() {
       <S.TextData>
         <S.InputsNameBlock>
           <S.InputWrapper>
-            <S.DataFormLabel htmlFor="first-name">Имя</S.DataFormLabel>
             <S.DataFormInput
               type="text"
               name="first-name"
               placeholder="Укажите имя"
               {...register('name')}
             />
+            <S.DataFormLabel htmlFor="first-name">Имя</S.DataFormLabel>
           </S.InputWrapper>
           <S.InputWrapper>
-            <S.DataFormLabel htmlFor="last-name">Фамилия</S.DataFormLabel>
             <S.DataFormInput
               type="text"
               name="last-name"
               placeholder="Укажите фамилию"
               {...register('surname')}
             />
+            <S.DataFormLabel htmlFor="last-name">Фамилия</S.DataFormLabel>
           </S.InputWrapper>
         </S.InputsNameBlock>
 
         <S.InputWrapper>
-          <S.DataFormLabel htmlFor="city">Город</S.DataFormLabel>
           <S.DataFormInput
             type="text"
             name="city"
             placeholder="Укажите город"
             {...register('city')}
           />
+          <S.DataFormLabel htmlFor="city">Город</S.DataFormLabel>
         </S.InputWrapper>
         <S.InputWrapper>
-          <S.DataFormLabel htmlFor="phone">Телефон</S.DataFormLabel>
           <S.DataFormInput
             type="tel"
             name="phone"
@@ -156,6 +155,7 @@ function ProfileDataForm() {
               },
             })}
           />
+          <S.DataFormLabel htmlFor="phone">Телефон</S.DataFormLabel>
           {errors.phone && (
             <S.ErrorSubmitText>{errors.phone.message}</S.ErrorSubmitText>
           )}
