@@ -66,6 +66,9 @@ const userSlice = createSlice({
       state.refreshToken = null;
       state.error = null;
       state.success = false;
+
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('refreshToken');
     });
 
     builder.addCase(checkUser.pending, (state, { payload }) => {
