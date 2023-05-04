@@ -1,15 +1,50 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
-export const Adv = styled.div``;
+export const Adv = styled.div`
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+
+  @media ${device.desktop} {
+    box-shadow: none;
+    border-radius: none;
+  }
+`;
 
 export const AdvImage = styled.img`
-  width: 270px;
-  height: 270px;
-  margin-bottom: 20px;
+  height: 132px;
+  margin-bottom: 10px;
+  border-radius: 6px 6px 0 0;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+    width: 270px;
+    height: 270px;
+    margin-bottom: 20px;
+    border-radius: none;
+  }
+`;
+
+export const AdvInfo = styled.div`
+  padding: 0 10px 20px 10px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+  }
 `;
 
 export const AdvTitle = styled.p`
-  font-size: 22px;
+  font-size: 14px;
   margin-bottom: 10px;
   color: #009ee4;
   font-weight: 500;
@@ -18,23 +53,63 @@ export const AdvTitle = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 22px;
+  }
 `;
 
 export const AdvPrice = styled.p`
-  font-size: 22px;
+  font-size: 16px;
   margin-bottom: 10px;
   color: #000;
   font-weight: 500;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 22px;
+  }
 `;
 
 export const AdvLocation = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 4px;
   color: #5f5f5f;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 16px;
+  }
 `;
 
 export const AdvDataRelease = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 4px;
   color: #5f5f5f;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 16px;
+  }
 `;

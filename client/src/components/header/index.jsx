@@ -6,6 +6,7 @@ import HeaderButton from './header-button';
 import { StyledContainer, Overlay } from '../../global-styles';
 import AdvForm from '../adv-form';
 import { userLogout } from '../../redux/slices/userActions';
+import mobLogo from '../../assets/static/mob_logo_header.svg';
 
 function Header() {
   const [visibleAddAdv, setVisibleAddAdv] = useState();
@@ -21,6 +22,7 @@ function Header() {
   return (
     <S.Header>
       <StyledContainer>
+        <S.HeaderMobileLogo src={mobLogo} alt="mobile logo" />
         <S.HeaderInner>
           {!userToken ? (
             <Link to="/login">

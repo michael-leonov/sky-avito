@@ -61,7 +61,7 @@ function Auth() {
   return (
     <S.Auth>
       <S.AuthBlock>
-        <img src={LogoAuth} alt="logo" />
+        <S.AuthLogo src={LogoAuth} alt="logo" />
 
         <S.AuthForm onSubmit={handleSubmit(onSubmit)}>
           <S.AuthFormInput

@@ -5,6 +5,7 @@ import ReturnHome from './components/return-home';
 import AppRoutes from './routes';
 import { GlobalStyle } from './global-styles';
 import { checkUser } from './redux/slices/userActions';
+import FooterMob from './components/footer-mob';
 
 function App() {
   const { userToken, refreshToken } = useSelector((state) => state.user);
@@ -27,6 +28,7 @@ function App() {
       <Header />
       <ReturnHome />
       <AppRoutes />
+      <FooterMob />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
 export const Main = styled.div`
   padding-bottom: 37px;
@@ -6,15 +7,34 @@ export const Main = styled.div`
 
 export const AdvList = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px 26px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media ${device.laptop} {
+    gap: 30px;
+  }
+
+  @media ${device.desktop} {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px 26px;
+  }
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
-  column-gap: 26px;
+  column-gap: 16px;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  @media ${device.desktop} {
+    column-gap: 26px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const Title = styled.h1`

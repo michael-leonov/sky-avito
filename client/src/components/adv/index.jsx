@@ -20,15 +20,17 @@ function Adv({ id, title, price, images, user, created_on }) {
           alt={title}
         />
       </Link>
-      <Link to={`${ADV_ROUTE}/${id}`}>
-        <S.AdvTitle>{title}</S.AdvTitle>
-      </Link>
+      <S.AdvInfo>
+        <Link to={`${ADV_ROUTE}/${id}`}>
+          <S.AdvTitle>{title}</S.AdvTitle>
+        </Link>
 
-      <S.AdvPrice>{formatePrice(price)} ₽</S.AdvPrice>
-      <S.AdvLocation>{user.city}</S.AdvLocation>
-      <S.AdvDataRelease>
-        {created_on && formateAdvDate(created_on)}
-      </S.AdvDataRelease>
+        <S.AdvPrice>{formatePrice(price)} ₽</S.AdvPrice>
+        <S.AdvLocation>{user.city}</S.AdvLocation>
+        <S.AdvDataRelease>
+          {created_on && formateAdvDate(created_on)}
+        </S.AdvDataRelease>
+      </S.AdvInfo>
     </S.Adv>
   );
 }

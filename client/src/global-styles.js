@@ -4,13 +4,14 @@ import RobotoMedium from './assets/fonts/Roboto-Medium.ttf';
 import NotoSansRegular from './assets/fonts/NotoSans-Regular.ttf';
 import NotoSansSemiBold from './assets/fonts/NotoSans-SemiBold.ttf';
 import NotoSansBoldr from './assets/fonts/NotoSans-Bold.ttf';
+import { device } from './utils/consts';
 
 export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    line-height: 1.5;
+    line-height: 1.2;
   
     ::before,::after {
       box-sizing: border-box;
@@ -102,10 +103,16 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-family: 'Roboto';
-    font-weight: 600;
-    font-size: 40px;
-    margin-bottom: 10px;
-    line-height: 2;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+
+    @media ${device.desktop} {
+      line-height: 2;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
   }
 
   h2 {
@@ -118,8 +125,23 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const StyledContainer = styled.div`
-  width: 1160px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
+
+  @media ${device.tablet} {
+    width: 720px;
+    padding: 0 16px;
+  }
+
+  @media ${device.laptop} {
+    width: 964px;
+    padding: 0 18px;
+  }
+
+  @media ${device.desktop} {
+    width: 1160px;
+  }
 `;
 
 export const Overlay = styled.div`

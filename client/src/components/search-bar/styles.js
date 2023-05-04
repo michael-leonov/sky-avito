@@ -1,7 +1,15 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
 export const Search = styled.div`
-  margin-bottom: 43px;
+  display: none;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    margin-bottom: 43px;
+  }
 `;
 
 export const SearchWrapper = styled.div`

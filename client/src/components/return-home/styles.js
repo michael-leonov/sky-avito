@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
 export const BackHomeBlock = styled.div`
-  margin-bottom: 43px;
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+    margin-bottom: 43px;
+  }
 `;
 
 export const ReturnHomeWrapper = styled.div`
