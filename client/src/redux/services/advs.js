@@ -12,9 +12,12 @@ export const advApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
-        headers.set('Content-Type', 'application/json');
-        headers.set('Accept', 'application/json');
       }
+
+      headers.set(
+        'Accept',
+        'application/json, application/xml, text/plain, text/html, *.*'
+      );
 
       return headers;
     },
@@ -44,11 +47,6 @@ export const advApi = createApi({
           price,
         })}`,
         method: 'POST',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        //   accept: 'application/json',
-        // },
-
         body: files,
       }),
       invalidatesTags: ['Adv'],
@@ -58,9 +56,6 @@ export const advApi = createApi({
       query: (advId) => ({
         url: `/ads/${advId}`,
         method: 'DELETE',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        // },
       }),
       invalidatesTags: ['Adv'],
     }),
@@ -69,9 +64,6 @@ export const advApi = createApi({
       query: ({ advId, title, description, price }) => ({
         url: `/ads/${advId}`,
         method: 'PATCH',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        // },
         body: { title, description, price },
       }),
       invalidatesTags: ['Adv'],
@@ -81,9 +73,7 @@ export const advApi = createApi({
       query: ({ advId, file }) => ({
         url: `/ads/${advId}/image`,
         method: 'POST',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        // },
+
         body: file,
       }),
       invalidatesTags: ['Adv'],
@@ -95,9 +85,6 @@ export const advApi = createApi({
           file_url: file,
         })}`,
         method: 'DELETE',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        // },
       }),
       invalidatesTags: ['Adv'],
     }),
@@ -111,9 +98,6 @@ export const advApi = createApi({
       query: ({ advId, payload }) => ({
         url: `/ads/${advId}/comments`,
         method: 'POST',
-        // headers: {
-        //   authorization: `Bearer ${token}`,
-        // },
         body: { text: payload.review },
       }),
       invalidatesTags: ['Comment'],
