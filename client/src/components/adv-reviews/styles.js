@@ -1,39 +1,65 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
 export const ReviewsBlock = styled.div`
-  position: relative;
-  width: 800px;
-  max-height: 900px;
   border-radius: 12px;
-  z-index: 1;
-  background-color: #fff;
-  padding: 0 12px 12px 0;
+  width: 95%;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  z-index: 3;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    position: relative;
+    width: 800px;
+    max-height: 900px;
+    border-radius: 12px;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0 12px 12px 0;
+  }
 `;
 
 export const ReviewTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px 0;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    padding: 20px 50px 0;
+  }
 `;
 
 export const OverflowBlock = styled.div`
-  max-height: 720px;
   overflow-y: scroll;
-  padding: 0 80px 70px 50px;
+  max-height: 390px;
 
-  ::-webkit-scrollbar {
-    width: 6px;
-    padding: 10px;
+  @media ${device.tablet} {
   }
 
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
+  @media ${device.desktop} {
+    max-height: 720px;
+    overflow-y: scroll;
+    padding: 0 80px 70px 50px;
 
-  ::-webkit-scrollbar-thumb {
-    background-color: #d9d9d9;
-    border-radius: 10px;
+    ::-webkit-scrollbar {
+      width: 6px;
+      padding: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #d9d9d9;
+      border-radius: 10px;
+    }
   }
 `;
 
