@@ -7,6 +7,7 @@ export const Auth = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 40px 0 100px;
 `;
 
 export const AuthBlock = styled.div`

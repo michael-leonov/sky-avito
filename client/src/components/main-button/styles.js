@@ -10,6 +10,7 @@ export const Button = styled.button`
   font-family: 'Roboto';
   font-weight: 400;
   transition: background-color 0.2s ease-in;
+  max-width: 320px;
 
   :hover {
     background-color: #0080c1;
