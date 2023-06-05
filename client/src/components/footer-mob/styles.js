@@ -10,8 +10,9 @@ export const FooterMobBlock = styled.footer`
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 6px 0;
-  /* margin-top: 30px; */
+  z-index: 1;
 
   @media ${device.tablet} {
     display: none;
