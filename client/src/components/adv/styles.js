@@ -12,14 +12,17 @@ export const Adv = styled.div`
 `;
 
 export const AdvImage = styled.img`
-  height: 132px;
+  height: 41.25vw;
   margin-bottom: 10px;
   border-radius: 6px 6px 0 0;
+  width: 100%;
 
   @media ${device.tablet} {
+    height: 27vw;
   }
 
   @media ${device.laptop} {
+    height: 23vw;
   }
 
   @media ${device.desktop} {
