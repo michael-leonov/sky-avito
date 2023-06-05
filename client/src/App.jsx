@@ -6,6 +6,7 @@ import AppRoutes from './routes';
 import { GlobalStyle } from './global-styles';
 import { checkUser } from './redux/slices/userActions';
 import FooterMob from './components/footer-mob';
+import { ShowAdvFormContextProvider } from './context/showAdvForm';
 
 function App() {
   const { userToken, refreshToken } = useSelector((state) => state.user);
@@ -23,13 +24,13 @@ function App() {
   }, []);
 
   return (
-    <>
+    <ShowAdvFormContextProvider>
       <GlobalStyle />
       <Header />
       <ReturnHome />
       <AppRoutes />
       <FooterMob />
-    </>
+    </ShowAdvFormContextProvider>
   );
 }
 
