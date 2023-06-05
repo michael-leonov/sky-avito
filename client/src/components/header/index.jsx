@@ -6,7 +6,9 @@ import HeaderButton from './header-button';
 import { StyledContainer, Overlay } from '../../global-styles';
 import AdvForm from '../adv-form';
 import { userLogout } from '../../redux/slices/userActions';
-import mobLogo from '../../assets/static/mob_logo_header.svg';
+import SearchBar from '../search-bar';
+import { useGetAdvsQuery } from '../../redux/services/advs';
+import { useShowAdvFormContext } from '../../context/showAdvForm';
 
 function Header() {
   const [visibleAddAdv, setVisibleAddAdv] = useState();
@@ -19,10 +21,27 @@ function Header() {
     dispatch(userLogout());
   };
 
+  const { data, isLoading, isError, isFetching } = useGetAdvsQuery();
+
+  const { toggleShowAdvForm } = useShowAdvFormContext();
+
+  const openForm = () => {
+    setVisibleAddAdv(true);
+    toggleShowAdvForm();
+  };
+
+  const closeForm = () => {
+    setVisibleAddAdv(false);
+    toggleShowAdvForm();
+  };
+
   return (
     <S.Header>
       <StyledContainer>
-        <S.HeaderMobileLogo src={mobLogo} alt="mobile logo" />
+        <S.HeaderMobileInner>
+          <SearchBar advs={data} />
+        </S.HeaderMobileInner>
+
         <S.HeaderInner>
           {!userToken ? (
             <Link to="/login">
@@ -30,7 +49,7 @@ function Header() {
             </Link>
           ) : (
             <S.HeaderAuthButtons>
-              <HeaderButton onClick={() => setVisibleAddAdv(true)}>
+              <HeaderButton onClick={openForm}>
                 Разместить объявление
               </HeaderButton>
               <Link to={`/profile/${userInfo?.id}`}>
@@ -44,10 +63,7 @@ function Header() {
 
       {visibleAddAdv && (
         <Overlay>
-          <AdvForm
-            closeForm={() => setVisibleAddAdv(false)}
-            isEditStatusForm={false}
-          />
+          <AdvForm closeForm={closeForm} isEditStatusForm={false} />
         </Overlay>
       )}
     </S.Header>

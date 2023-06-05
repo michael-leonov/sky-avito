@@ -4,27 +4,31 @@ import { device } from '../../utils/consts';
 export const Header = styled.header`
   background-color: #009ee4;
   padding: 20px 0;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 
   @media ${device.tablet} {
     margin-bottom: 43px;
   }
 `;
 
-export const HeaderMobileLogo = styled.img`
+export const HeaderMobileInner = styled.div`
   @media ${device.tablet} {
     display: none;
   }
 `;
 
-export const HeaderInner = styled.div`
-  display: flex;
-  justify-content: end;
+// export const HeaderMobileLogo = styled.img`
+//   @media ${device.tablet} {
+//     display: none;
+//   }
+// `;
 
+export const HeaderInner = styled.div`
   display: none;
 
   @media ${device.tablet} {
-    display: block;
+    display: flex;
+    justify-content: end;
   }
 `;
 
