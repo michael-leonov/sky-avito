@@ -2,7 +2,19 @@ import styled from 'styled-components';
 import { device } from '../../utils/consts';
 
 export const Main = styled.div`
-  padding-bottom: 37px;
+  padding: 30px 0 67px 0;
+`;
+
+export const SearcBarWrapper = styled.div`
+  display: none;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    display: block;
+    margin-bottom: 43px;
+  }
 `;
 
 export const AdvList = styled.div`

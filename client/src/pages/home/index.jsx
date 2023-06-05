@@ -42,7 +42,10 @@ function Home() {
   return (
     <S.Main>
       <StyledContainer>
-        <SearchBar advs={data} setIsSearch={setIsSearch} />
+        <S.SearcBarWrapper>
+          <SearchBar advs={data} setIsSearch={setIsSearch} />
+        </S.SearcBarWrapper>
+
         <S.TitleWrapper>
           <S.Title>Объявления</S.Title>
           {!isLoading &&
