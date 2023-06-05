@@ -20,7 +20,9 @@ function FoundAdv({ id, title, price, images, onClick }) {
             height={30}
           />
           <p>{title}</p>
-          <p>{price} ₽</p>
+          <p>
+            <nobr>{price} ₽</nobr>
+          </p>
         </S.FoundAdv>
       </Link>
     </S.WrapperLink>

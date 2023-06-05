@@ -2,15 +2,24 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import * as S from './styles';
 import logo from '../../assets/static/logo.svg';
 import MainButton from '../main-button';
-import { StyledContainer, Overlay } from '../../global-styles';
+import { Overlay } from '../../global-styles';
 import FoundAdv from './found-adv';
 import { filterAdv } from '../../redux/slices/filterAdvAction';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import mobLogo from '../../assets/static/mob_logo_header.svg';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { HOME_ROUTE, device } from '../../utils/consts';
+import { useShowAdvFormContext } from '../../context/showAdvForm';
 
 function SearchBar({ advs, setIsSearch }) {
+  const isNoMobile = useMediaQuery(device.tablet);
+
+  const location = useLocation();
+
   const InputWrapperRef = useRef();
   const InputRef = useRef();
 
@@ -22,6 +31,8 @@ function SearchBar({ advs, setIsSearch }) {
   const [bufferSearchValue, setBufferSearchValue] = useState('');
   const [countSlice, setCountSlice] = useState(filterSearchCount);
   const [isClickShowMore, setIsClickShowMore] = useState(false);
+
+  const { ShowAdvFormContext } = useShowAdvFormContext();
 
   const filteredAdvs = advs?.filter((adv) =>
     adv?.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -69,24 +80,31 @@ function SearchBar({ advs, setIsSearch }) {
 
   return (
     <S.Search>
-      <StyledContainer>
-        <S.SearchWrapper>
-          <S.LogoWrapper>
-            <img src={logo} alt="logo" />
-          </S.LogoWrapper>
+      <S.SearchWrapper>
+        <S.LogoWrapper isFormVisible={ShowAdvFormContext}>
+          <S.MobileLogo src={mobLogo} alt="mobile logo" />
+          <S.Logo src={logo} alt="logo" />
+        </S.LogoWrapper>
 
+        {location.pathname === HOME_ROUTE && (
           <S.SearchBlock>
-            <S.SearchInputWrapper ref={InputWrapperRef}>
+            <S.SearchInputWrapper
+              ref={InputWrapperRef}
+              isFormVisible={ShowAdvFormContext}
+            >
               <S.SearchInput
-                placeholder="Поиск по объявлениям"
+                placeholder={!isNoMobile ? 'Поиск' : 'Поиск по объявлениям'}
                 onFocus={onFocusHanlder}
                 onChange={onChangeHandler}
                 ref={InputRef}
                 isSearch={isSearchActive}
                 seachValue={searchValue}
               />
-              {searchValue !== '' && (
-                <S.FoundAdvsWrapper isSearch={isSearchActive}>
+              {isSearchActive && (
+                <S.FoundAdvsWrapper
+                  isSearch={isSearchActive}
+                  isFormVisible={ShowAdvFormContext}
+                >
                   <span>
                     {filteredAdvs.length
                       ? `Найдено: ${filteredAdvs.length}`
@@ -126,7 +144,7 @@ function SearchBar({ advs, setIsSearch }) {
                 </S.FoundAdvsWrapper>
               )}
             </S.SearchInputWrapper>
-            <S.ButtonWrapper>
+            <S.ButtonWrapper isFormVisible={ShowAdvFormContext}>
               <MainButton
                 onClick={onClickFindHandler}
                 active={filteredAdvs?.length > 0}
@@ -135,8 +153,8 @@ function SearchBar({ advs, setIsSearch }) {
               </MainButton>
             </S.ButtonWrapper>
           </S.SearchBlock>
-        </S.SearchWrapper>
-      </StyledContainer>
+        )}
+      </S.SearchWrapper>
 
       {isSearchActive && <Overlay />}
     </S.Search>
