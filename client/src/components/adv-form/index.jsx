@@ -98,8 +98,6 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
 
     setPreviewImages(filterPreviewImages);
 
-    console.log('removableFileArr', removableFileArr);
-
     if (filterPreviewImages.length < maxCountAdvImages) {
       setIsPlusFile(true);
     } else {
@@ -126,7 +124,6 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
   };
 
   useEffect(() => {
-    console.log('files', files);
     const fileArr = files.map((file) => URL.createObjectURL(file));
 
     const concatArr = previewImages.concat(fileArr);
@@ -137,8 +134,6 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
     } else {
       setPreviewImages(concatArr);
     }
-
-    console.log('concatArr', concatArr);
 
     if (concatArr.length < maxCountAdvImages) {
       setIsPlusFile(true);
@@ -167,7 +162,6 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
   }, [formState, reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
     if (!isEditStatusForm) {
       const formData = new FormData();
       files.forEach((file) => {

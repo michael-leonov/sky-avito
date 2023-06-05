@@ -1,12 +1,27 @@
 import styled from 'styled-components';
+import { device } from '../../utils/consts';
 
 export const FormWrapper = styled.div`
-  position: relative;
-  width: 600px;
   border-radius: 12px;
-  z-index: 2;
+  width: 95%;
+  padding: 10px;
   background-color: #fff;
-  padding: 20px 50px 42px 50px;
+  z-index: 3;
+  max-height: 450px;
+  overflow-y: scroll;
+
+  @media ${device.tablet} {
+    width: 600px;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  @media ${device.desktop} {
+    position: relative;
+
+    padding: 20px 50px 42px 50px;
+    z-index: 2;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -29,11 +44,19 @@ export const InputWrapper = styled.div`
 `;
 
 export const FormInputName = styled.input`
-  padding: 13px 20px;
+  padding: 10px 17px;
+
+  @media ${device.desktop} {
+    padding: 13px 20px;
+  }
 `;
 
 export const FormInputDescription = styled.input`
-  padding: 13px 20px 163px 20px;
+  padding: 10px 17px;
+
+  @media ${device.desktop} {
+    padding: 13px 20px 163px 20px;
+  }
 `;
 
 export const FormInputFile = styled.input`
@@ -112,7 +135,11 @@ export const FormInputPriceWrapper = styled.div`
 
 export const FormInputPrice = styled.input`
   width: 100%;
-  padding: 13px 40px 13px 20px;
+  padding: 10px 17px;
+
+  @media ${device.desktop} {
+    padding: 13px 40px 13px 20px;
+  }
 `;
 
 export const ErrorSubmitText = styled.span`
