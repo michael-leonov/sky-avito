@@ -1,24 +1,78 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { device } from '../../utils/consts';
 
 export const Main = styled.div`
-  padding-bottom: 117px;
+  padding-bottom: 88px;
+
+  @media ${device.desktop} {
+    padding-bottom: 117px;
+  }
 `;
 
 export const AdvInfo = styled.div`
   display: flex;
+  flex-direction: column;
   column-gap: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
+
+  @media ${device.desktop} {
+    margin-bottom: 60px;
+  }
+`;
+
+export const MobAdvImagesBlock = styled.div`
+  margin-bottom: 20px;
+  position: relative;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+export const ArrowBackBtn = styled.button`
+  position: absolute;
+  top: 20px;
+  left: 26px;
+  z-index: ${({ isFormVisible }) => (isFormVisible ? '0' : '2')};
+  padding: 0;
+  border: none;
+  background-color: transparent;
+`;
+
+export const AdvSlideImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: #dcdcdc;
+`;
+
+export const AdvSlideImg = styled.img`
+  width: 320px;
+  height: 320px;
 `;
 
 export const AdvImagesBlock = styled.div`
-  min-width: 480px;
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+  }
+
+  @media ${device.desktop} {
+    min-width: 480px;
+  }
 `;
 
 export const CurrentAdvImageWrapper = styled.div`
-  width: 480px;
-  height: 480px;
-  margin-bottom: 30px;
+  @media ${device.desktop} {
+    width: 480px;
+    height: 480px;
+    margin-bottom: 30px;
+  }
 `;
 
 export const CurrentAdvImage = styled.img`
@@ -45,44 +99,78 @@ export const AdvImage = styled.img`
 `;
 
 export const AdvTitle = styled.p`
-  font-size: 32px;
+  font-size: 18px;
   margin-bottom: 10px;
   font-weight: 700;
   font-family: 'NotoSans';
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 32px;
+  }
 `;
 
 export const AdvDataRelease = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 4px;
   color: #5f5f5f;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 16px;
+  }
 `;
 
-export const AdvLocation = styled.p`
-  font-size: 16px;
-  margin-bottom: 4px;
-  color: #5f5f5f;
-`;
+export const AdvLocation = styled(AdvDataRelease)``;
 
-export const AdvReviews = styled.span`
-  font-size: 16px;
-  margin-bottom: 34px;
+export const AdvReviews = styled.p`
+  font-size: 14px;
+  margin-bottom: 20px;
   color: #009ee4;
   cursor: pointer;
   font-weight: 400;
   font-family: 'NotoSans';
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 16px;
+    margin-bottom: 34px;
+  }
 `;
 
 export const AdvPrice = styled.p`
-  font-size: 28px;
+  font-size: 18px;
   margin-bottom: 20px;
   font-weight: 700;
   font-family: 'NotoSans';
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    font-size: 28px;
+  }
 `;
 
 export const AdvSettingsButtons = styled.div`
   display: flex;
-  column-gap: 10px;
+  flex-direction: column;
+  row-gap: 10px;
   margin-bottom: 34px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.desktop} {
+    flex-direction: row;
+    column-gap: 10px;
+  }
 `;
 
 export const PhoneButton = styled.button`
@@ -125,19 +213,27 @@ export const SellerAvatar = styled.img`
 `;
 
 export const SellerName = styled(Link)`
-  font-size: 20px;
+  font-size: 18px;
   line-height: 26px;
   color: #009ee4;
   font-weight: 600;
   font-family: 'NotoSans';
+
+  @media ${device.desktop} {
+    font-size: 20px;
+  }
 `;
 
 export const SellerActivity = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   line-height: 32px;
   font-weight: 400;
   font-family: 'NotoSans';
   color: #5f5f5f;
+
+  @media ${device.desktop} {
+    font-size: 16px;
+  }
 `;
 
 export const AdvDescription = styled.p`
