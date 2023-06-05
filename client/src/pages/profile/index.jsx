@@ -74,7 +74,7 @@ function Profile() {
           <>
             <h1>Профиль продавца</h1>
             <S.SellerInfoBlock>
-              <div>
+              <S.AvatarWrapper>
                 <img
                   src={
                     (sellerInfo?.avatar &&
@@ -84,7 +84,11 @@ function Profile() {
                   alt="seller avatar"
                   width={170}
                 />
-              </div>
+                <S.PhoneButtonMobWrapper>
+                  <PhoneButton phone={sellerInfo?.phone} />
+                </S.PhoneButtonMobWrapper>
+              </S.AvatarWrapper>
+
               <div>
                 <S.SellerName>
                   {(sellerInfo?.name && `${sellerInfo?.name}`) ||
@@ -94,11 +98,13 @@ function Profile() {
                 <S.SellerLocation>{sellerInfo?.city}</S.SellerLocation>
                 <S.SellerActivity>
                   {sellerInfo?.sells_from &&
-                    `Продает товары с${formatSellsFrom(
+                    `Продает товары с ${formatSellsFrom(
                       sellerInfo?.sells_from
                     )}`}
                 </S.SellerActivity>
-                <PhoneButton phone={sellerInfo?.phone} />
+                <S.PhoneButtonDesktopWrapper>
+                  <PhoneButton phone={sellerInfo?.phone} />
+                </S.PhoneButtonDesktopWrapper>
               </div>
             </S.SellerInfoBlock>
             <h2>Товары продавца</h2>

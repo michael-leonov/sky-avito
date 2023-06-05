@@ -161,14 +161,14 @@ function ProfileDataForm() {
           )}
         </S.InputWrapper>
 
-        <div>
+        <S.ButtonWrapper>
           <MainButton type="submit" active={!loading}>
             Сохранить
           </MainButton>
           {isErrorSubmit && (
             <S.ErrorSubmitText>Нечего менять</S.ErrorSubmitText>
           )}
-        </div>
+        </S.ButtonWrapper>
         <SubmitingForm loading={loading} />
       </S.TextData>
     </S.DataForm>
