@@ -59,6 +59,9 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
 
   const handleChange = (e) => {
     const { target } = e;
+
+    const filesArr = [...target.files];
+
     if (target.files.length > maxCountAdvImages) {
       setIsErrorFiles(true);
     } else {
@@ -66,16 +69,35 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
       setIsPrepareSubmit(true);
 
       if (files.length < maxCountAdvImages) {
-        setFiles((prev) => prev.concat([...target.files]));
+        setFiles((prev) => prev.concat(filesArr));
+
+        const filesObjectURLArr = filesArr.map((file) =>
+          URL.createObjectURL(file)
+        );
+
+        const previewImagesCount = previewImages.length + filesArr.length;
+
+        if (previewImagesCount > maxCountAdvImages) {
+          setPreviewImages(filesObjectURLArr);
+        } else {
+          setPreviewImages((prev) => prev.concat(filesObjectURLArr));
+        }
+
+        if (previewImagesCount === maxCountAdvImages) {
+          setIsPlusFile(false);
+        }
       } else {
-        setFiles([...target.files]);
+        setFiles(filesArr);
       }
     }
 
-    if (files.length === maxCountAdvImages) {
+    if (previewImages.length === maxCountAdvImages) {
       setIsPlusFile(false);
     }
   };
+
+  console.log(files);
+  console.log(previewImages);
 
   // todo: как удалить добавленный файл из массива файлов при удалении из превью
 
@@ -122,34 +144,6 @@ function AdvForm({ closeForm, isEditStatusForm, advInfo }) {
       setIsPrepareSubmit(true);
     }
   };
-
-  useEffect(() => {
-    const fileArr = files.map((file) => URL.createObjectURL(file));
-
-    const concatArr = previewImages.concat(fileArr);
-
-    if (concatArr.length > maxCountAdvImages) {
-      setRemovableFileArr(previewImages);
-      setPreviewImages(fileArr);
-    } else {
-      setPreviewImages(concatArr);
-    }
-
-    if (concatArr.length < maxCountAdvImages) {
-      setIsPlusFile(true);
-    } else {
-      setIsPlusFile(false);
-    }
-
-    const isEqual =
-      JSON.stringify(initPreviewImgArr) === JSON.stringify(concatArr);
-
-    if (isEqual) {
-      setIsPrepareSubmit(false);
-    } else {
-      setIsPrepareSubmit(true);
-    }
-  }, [files]);
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
