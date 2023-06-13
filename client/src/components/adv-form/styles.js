@@ -14,6 +14,7 @@ export const FormWrapper = styled.div`
     width: 600px;
     max-height: none;
     overflow-y: auto;
+    padding: 10px 30px;
   }
 
   @media ${device.desktop} {
